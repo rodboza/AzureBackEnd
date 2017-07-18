@@ -1,4 +1,4 @@
-onst jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 const env = require('../.env')
 
 module.exports = (req, res, next) => {
