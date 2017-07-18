@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
 
     console.log('token');
     console.log('request inicio');
-    console.log(req);
+    console.log(req.url);
     console.log('request fim');
     // CORS preflight request
     if (req.method === 'OPTIONS') {
