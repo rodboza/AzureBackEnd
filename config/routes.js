@@ -1,11 +1,11 @@
 const express = require('express')
 //const auth = require('./auth')
 
-module.export = function (server) {
+module.exports = function (server) {
 
-server.get('/', function(req, res) {
-  res.send('<h1>Index!</h1>')
-})
+  server.get('/', function(req, res) {
+    res.send('<h1>Index!</h1>')
+  })
   
 }
 
