@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
     console.log(req.url);
     console.log('request fim');
     // CORS preflight request
-    if (req.method === 'OPTIONS' || req.url.indexof('/auth/') !==-1) {
+    if (req.method === 'OPTIONS' ) {
         next();
     } else {
         const token = req.body.token || req.query.token || req.headers['authorization'];
