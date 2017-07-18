@@ -1,7 +1,8 @@
-//const server = require('./config/server')
+const server = require('./config/server')
 //require('./config/database')
 //require('./config/routes')(server)
 
+/*
 var http = require('http');
 
 http.createServer(function (req, res) {
@@ -9,3 +10,4 @@ http.createServer(function (req, res) {
     res.end('Hello, world! [helloworld sample; iisnode version is ' + process.env.IISNODE_VERSION + ', node version is ' + process.version + ']');
     console.log("teste");
 }).listen(process.env.PORT);  
+*/
