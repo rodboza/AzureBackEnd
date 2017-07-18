@@ -3,12 +3,16 @@ const env = require('../.env')
 
 module.exports = (req, res, next) => {
 
+    consult.log('token');
     // CORS preflight request
     if (req.method === 'OPTIONS') {
         next()
     } else {
         const token = req.body.token || req.query.token || req.headers['authorization']
 
+        consult.log(token);
+        consult.log(env._authSecret);
+        
         if (!token) {
             return res.status(403).send({ errors: ['No token provided.'] })
         }
