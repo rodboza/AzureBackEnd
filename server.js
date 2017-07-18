@@ -1,11 +1,9 @@
 console.log("inicio do arquivo /server.js");
-
 const server = require('./config/server')
-
+require('./config/database')
+require('./config/routes')(server)
 console.log("fim do arquivo /server.js");
 
-//require('./config/database')
-//require('./config/routes')(server)
 
 /*
 var http = require('http');
