@@ -4,6 +4,9 @@ const _authSecret = require('../.env');
 module.exports = (req, res, next) => {
 
     console.log('token');
+    console.log('request inicio');
+    console.log(req);
+    console.log('request fim');
     // CORS preflight request
     if (req.method === 'OPTIONS') {
         next();
