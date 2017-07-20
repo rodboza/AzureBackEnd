@@ -15,7 +15,7 @@ module.exports = function (server) {
 	openApi.post('/validateToken', AuthService.validateToken)  ;
   
   
-  server.use(auth);
+  //server.use(auth);
   
   server.get('/', function(req, res) {
     res.send('<h1>Index!</h1>');
