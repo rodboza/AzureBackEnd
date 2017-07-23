@@ -1,3 +1,4 @@
+/*
 const _ = require('lodash')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
@@ -82,3 +83,4 @@ const signup = (req, res, next) => {
 }
 
 module.exports = { login, signup, validateToken }
+*/

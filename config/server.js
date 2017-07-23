@@ -1,18 +1,28 @@
-const port = process.env.PORT
 
-const bodyParser = require('body-parser')
-const express = require('express')
-const server = express()
-const allowCors = require('./cors')
-const queryParser = require('express-query-int')
+const bodyParser = require('body-parser');
+const express = require('express');
+const allowCors = require('./cors');
+const queryParser = require('express-query-int');
+var consign = require('consign');
 
-server.use(bodyParser.urlencoded({ extended: true }))
-server.use(bodyParser.json())
-server.use(allowCors)
-server.use(queryParser())
+const app = express();
+const port = process.env.PORT || 3000;
 
-server.listen(port, function() {
-  console.log(`BACKEND is running on port ${port}.`)
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(allowCors);
+app.use(queryParser());
+
+consign({cwd: 'app'})
+    .include('model')
+    .then('api')
+    .then('route/rtsAuth.js')
+    .then('route')
+    .into(app);
+
+
+app.listen(port, function() {
+  console.log(`BACKEND is running on port ${port}.`);
 })
 
-module.exports = server
+module.exports = app;

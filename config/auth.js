@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const _authSecret = require('../.env');
+const _env = require('../.env');
 
 module.exports = (req, res, next) => {
 
@@ -14,13 +14,13 @@ module.exports = (req, res, next) => {
         const token = req.body.token || req.query.token || req.headers['authorization'];
 
         console.log(token);
-        console.log(_authSecret);
-        
+        console.log(_env._authSecret);
+
         if (!token) {
             return res.status(403).send({ errors: ['No token provided.'] });
         }
 
-        jwt.verify(token, _authSecret, function (err, decoded) {
+        jwt.verify(token, _env._authSecret, function (err, decoded) {
             if (err) {
                 return res.status(403).send({
                     errors: ['Failed to authenticate token.']
