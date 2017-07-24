@@ -1,3 +1,5 @@
+console.log("config.auth.js inicio");
+
 const jwt = require('jsonwebtoken');
 const _env = require('../.env');
 
