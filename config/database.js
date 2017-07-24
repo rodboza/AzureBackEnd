@@ -1,3 +1,5 @@
+console.log("config.database.js inicio");
+
 const mongoose = require('mongoose')
 const _env = require('../.env')
 module.exports = mongoose.connect(_env._connectString);
