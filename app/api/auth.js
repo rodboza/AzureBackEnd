@@ -75,7 +75,8 @@ module.exports = function(app) {
 					if (err) {
 						return sendErrorsFromDB(res, err);
 					} else {
-						api.login(req, res, next);
+						//api.login(req, res, next);
+						next();
 					}
 				})
 			}
