@@ -10,8 +10,7 @@ const env    = require('../../.env');
 module.exports = function(app) {
 
 	var api = {};
-	var model = mongoose.model('User');
-     const User = require('./model/user');
+	const User = require('./model/user');
 	 
 	const sendErrorsFromDB = (res, dbErrors) => {
 		const errors = [];
