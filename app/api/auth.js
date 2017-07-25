@@ -30,7 +30,8 @@ module.exports = function(app) {
 					expiresIn: "1 day"
 				});
 				const { name, email } = user;
-				res.json({ name, email, token });
+				//res.json({ name, email, token });
+				return res.status(200).send({ name, email, token });
 			} else {
 				return res.status(400).send({ errors: ['Usuário/Senha inválidos'] });
 			}
