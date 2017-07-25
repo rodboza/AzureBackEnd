@@ -6,6 +6,7 @@ module.exports = function(app) {
     app.post('/v1/auth/login', api.login);
     app.post('/v1/auth/logout', api.logout);
     app.post('/v1/auth/registrar', api.registrar);
+    app.post('/v1/auth/registrar', api.login);
     app.use('/*', api.validarToken);
 
 };
