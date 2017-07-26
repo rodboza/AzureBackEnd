@@ -10,8 +10,8 @@ const env    = require('../../.env');
 module.exports = function(app) {
 
 	var api = {};
-	const User = require('../model/user');
-	 
+	const User = require('../modelo/user');
+
 	const sendErrorsFromDB = (res, dbErrors) => {
 		const errors = [];
 		_.forIn(dbErrors.errors, error => errors.push(error.message));
@@ -21,7 +21,7 @@ module.exports = function(app) {
 	api.login = function(req, res, next) {
 		const email = req.body.email || '';
 		const password = req.body.password || '';
-		
+
 		User.findOne({ email }, (err, user) => {
 			if (err) {
 				return sendErrorsFromDB(res, err);
@@ -48,7 +48,7 @@ module.exports = function(app) {
 		const email = req.body.email || '';
 		const password = req.body.password || '';
 		const confirmPassword = req.body.confirm_password || '';
-		
+
 
 		if (!email.match(env._emailRegex)) {
 			return res.status(400).send({ errors: [ env._emailInvalido ] });
@@ -57,13 +57,13 @@ module.exports = function(app) {
 		if (!password.match(env._passwordRegex)) {
 			return res.status(400).send({ errors: [ env._senhaInvalida ] });
 		}
-		
+
 		const salt = bcrypt.genSaltSync();
 		const passwordHash = bcrypt.hashSync(password, salt);
 		if (!bcrypt.compareSync(confirmPassword, passwordHash)) {
 			return res.status(400).send({ errors: [ env._senhaDifConfirmacao ] });
 		}
-		
+
 		User.findOne({ email }, (err, user) => {
 			if (err) {
 				return sendErrorsFromDB(res, err);
@@ -81,8 +81,8 @@ module.exports = function(app) {
 				})
 			}
 		})
-		
-		
+
+
 	}
 
 	api.validarToken = function(req, res, next) {

@@ -14,10 +14,10 @@ app.use(allowCors);
 app.use(queryParser());
 
 consign({cwd: 'app'})
-    .include('model')
+    .include('modelo')
     .then('api')
-    .then('route/rtsAuth.js')
-    .then('route')
+    .then('rota/rtsAuth.js')
+    .then('rota')
     .into(app);
 
 
