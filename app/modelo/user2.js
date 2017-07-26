@@ -1,3 +1,4 @@
+/*
 const restful = require('node-restful')
 const mongoose = restful.mongoose
 
@@ -16,3 +17,4 @@ module.exports = function(app) {
   return modelo;
 }
 //module.exports = restful.model('User', userSchema)
+*/
