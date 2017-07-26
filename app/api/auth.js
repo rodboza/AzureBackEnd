@@ -2,7 +2,7 @@ const _      = require('lodash');
 const jwt    = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const env    = require('../../.env');
-
+const mongoose = require('mongoose');
 
 
 
@@ -10,7 +10,7 @@ const env    = require('../../.env');
 module.exports = function(app) {
 
 	var api = {};
-	const User = app.modelo.user2;
+	const User = mongoose.model('User');
 
 	const sendErrorsFromDB = (res, dbErrors) => {
 		const errors = [];
