@@ -10,7 +10,7 @@ const env    = require('../../.env');
 module.exports = function(app) {
 
 	var api = {};
-	const User = require('../modelo/user');
+	const User = app.modelo.user2;
 
 	const sendErrorsFromDB = (res, dbErrors) => {
 		const errors = [];
