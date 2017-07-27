@@ -19,7 +19,7 @@ module.exports = function(app) {
 			res.status(400);
 		return res.json({ errors });
 	}
-	
+
 	const enviaErro = ( _res, _status, _msg ) => {
 		_res.status(_status);
 		throw new Error(_msg);
@@ -30,17 +30,19 @@ module.exports = function(app) {
 		const password = req.body.password || '';
 
 		User.findOne({ email } )
-			.then( 
+			.then(
 				function (user){
-					if (! ( user && bcrypt.compareSync(password, user.password ) ) ) 
+					if (! ( user && bcrypt.compareSync(password, user.password ) ) )
 						enviaErro(res,404, 'Usuário/Senha inválidos');
 					const token = jwt.sign(user, env._authSecret, {expiresIn: "1 day"});
 					const { name, email } = user;
 					return res.status(200).send({ name, email, token });
 				}
+
 				,function ( err ) {
 					return sendErrorsFromDB(res, err);
 				}
+
 			);
 	}
 
@@ -59,12 +61,12 @@ module.exports = function(app) {
 		User.findOne({ email })
 			.then(
 				function (user){
-					if (user) 
+					if (user)
 						return enviaErro ( res, 400, env._usuarioJaCadastrado );
-					
+
 					if (!email.match(env._emailRegex))
 						return enviaErro ( res, 400, env._emailInvalido );
-					
+
 					if (!password.match(env._passwordRegex))
 						return enviaErro ( res, 400, env._senhaInvalida );
 
@@ -72,10 +74,10 @@ module.exports = function(app) {
 					const passwordHash = bcrypt.hashSync(password, salt);
 					if (!bcrypt.compareSync(confirmPassword, passwordHash))
 						return enviaErro ( res, 400, env._senhaDifConfirmacao );
-					
+
 					const newUser = new User({ name, email, password: passwordHash });
 					newUser.save()
-						.then( 
+						.then(
 							function (err){
 								return sendErrorsFromDB(res, err);
 							}

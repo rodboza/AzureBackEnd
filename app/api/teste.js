@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 module.exports = function(app) {
 
      var api = {};
-     User = app.modelo.user2;
+     User = mongoose.model('User');
      //User.name = "teste";
 
      const sendErrorsFromDB = (res, dbErrors) => {
